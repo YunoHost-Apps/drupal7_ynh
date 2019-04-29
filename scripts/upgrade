@@ -130,6 +130,8 @@ sudo -u $app env PATH=$PATH drush @$app cache-clear all
 sudo -u $app env PATH=$PATH drush @$app pm-update drupal
 sudo -u $app env PATH=$PATH drush @$app vset --exact maintenance_mode 0 
 sudo -u $app env PATH=$PATH drush @$app cache-clear all 
+sudo -u $app env PATH=$PATH drush @$app l10n-update-refresh
+sudo -u $app env PATH=$PATH drush @$app l10n-update
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
