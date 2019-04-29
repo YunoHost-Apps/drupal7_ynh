@@ -17,10 +17,6 @@ Framework de gestion de contenu libre et open-source.
 
 ![](https://www.drupal.org/files/issues/D7-screenshot.png)
 
-## Configuration
-
-Comment configurer cette application: via le panneau d'administration, un fichier brut en SSH ou tout autre moyen.
-
 ## Documentation
 
  * Documentation officielle: https://www.drupal.org/docs/7
@@ -29,8 +25,7 @@ Comment configurer cette application: via le panneau d'administration, un fichie
 
 #### Support multi-utilisateurs
 
-L'authentification LDAP et HTTP est-elle prise en charge?
-L'application peut-elle être utilisée par plusieurs utilisateurs?
+le module d'authentification LDAP peut être installé
 
 #### Supported architectures
 
@@ -38,18 +33,7 @@ L'application peut-elle être utilisée par plusieurs utilisateurs?
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/drupal7%20%28Community%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/drupal7/)
 * Jessie x86-64b - [![Build Status](https://ci-stretch.nohost.me/ci/logs/drupal7%20%28Community%29.svg)](https://ci-stretch.nohost.me/ci/apps/drupal7/)
 
-## Limitations
-
-* Limitations connues.
-
-## Informations additionnelles
-
-* Autres informations à ajouter sur cette application
-
-**Plus d'informations sur la page de documentation:**  
-https://yunohost.org/packaging_apps
-
-## Links
+## Liens
 
  * Signaler un bug: https://github.com/YunoHost-Apps/drupal7_ynh/issues
  * Site de l'application: https://www.drupal.org
