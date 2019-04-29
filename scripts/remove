@@ -36,14 +36,6 @@ then
 fi
 
 #=================================================
-# STOP AND REMOVE SERVICE
-#=================================================
-ynh_print_info --message="Stopping and removing the systemd service"
-
-# Remove the dedicated systemd config
-ynh_remove_systemd_config
-
-#=================================================
 # REMOVE THE MYSQL DATABASE
 #=================================================
 ynh_print_info --message="Removing the MySQL database"
@@ -57,7 +49,7 @@ ynh_mysql_remove_db --db_user=$db_user --db_name=$db_name
 ynh_print_info --message="Removing dependencies"
 
 # Remove metapackage and its dependencies
-ynh_remove_app_dependencies
+#ynh_remove_app_dependencies
 
 #=================================================
 # REMOVE APP MAIN DIR
@@ -84,24 +76,6 @@ ynh_print_info --message="Removing php-fpm configuration"
 ynh_remove_fpm_config
 
 #=================================================
-# REMOVE LOGROTATE CONFIGURATION
-#=================================================
-ynh_print_info --message="Removing logrotate configuration"
-
-# Remove the app-specific logrotate config
-ynh_remove_logrotate
-
-#=================================================
-# CLOSE A PORT
-#=================================================
-
-if yunohost firewall list | grep -q "\- $port$"
-then
-	ynh_print_info --message="Closing port $port"
-	ynh_exec_warn_less yunohost firewall disallow TCP $port
-fi
-
-#=================================================
 # SPECIFIC REMOVE
 #=================================================
 # REMOVE THE CRON FILE
@@ -109,12 +83,6 @@ fi
 
 # Remove a cron file
 ynh_secure_remove --file="/etc/cron.d/$app"
-
-# Remove a directory securely
-ynh_secure_remove --file="/etc/$app/"
-
-# Remove the log files
-ynh_secure_remove --file="/var/log/$app/"
 
 #=================================================
 # GENERIC FINALIZATION
