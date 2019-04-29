@@ -83,7 +83,7 @@ ynh_print_info --message="Upgrading source files..."
 ynh_print_info --message="Upgrading nginx web server configuration..."
 
 # Create a dedicated nginx config
-ynh_add_nginx_config "app"
+ynh_add_nginx_config
 
 #=================================================
 # UPGRADE DEPENDENCIES
