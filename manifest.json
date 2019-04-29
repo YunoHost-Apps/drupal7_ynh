@@ -35,8 +35,8 @@
                 "name": "path",
                 "type": "path",
                 "ask": {
-                    "en": "Choose a path for  Drupal 7",
-                    "fr": "Choisissez un chemin pour  Drupal 7"
+                    "en": "Choose a path for Drupal 7",
+                    "fr": "Choisissez un chemin pour Drupal 7"
                 },
                 "example": "/example",
                 "default": "/example"
@@ -67,7 +67,7 @@
                     "fr": "Choisissez la langue de l'application"
                 },
                 "choices": ["fr", "en"],
-                "default": "fr"
+                "default": "en"
             },
             {
                 "name": "password",
@@ -81,6 +81,16 @@
                     "fr": "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
                 },
                 "example": "Choose a password"
+            },
+            {
+                "name": "install_profil",
+                "type": "string",
+                "ask": {
+                    "en": "Choose the Drupal 7 install profile to use",
+                    "fr": "Choisissez le profile d'installation de Drupal 7"
+                },
+                "choices": ["minimal", "standard"],
+                "default": "standard"
             }
         ]
     }
