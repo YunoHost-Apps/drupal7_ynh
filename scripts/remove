@@ -25,17 +25,6 @@ final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 #=================================================
 # STANDARD REMOVE
 #=================================================
-# REMOVE SERVICE FROM ADMIN PANEL
-#=================================================
-
-# Remove a service from the admin panel, added by `yunohost service add`
-if yunohost service status $app >/dev/null 2>&1
-then
-	ynh_print_info --message="Removing $app service"
-	yunohost service remove $app
-fi
-
-#=================================================
 # REMOVE THE MYSQL DATABASE
 #=================================================
 ynh_print_info --message="Removing the MySQL database"
