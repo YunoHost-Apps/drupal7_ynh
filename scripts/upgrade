@@ -127,7 +127,7 @@ export PATH="$final_path/.composer/vendor/bin:$PATH"
 
 sudo -u $app env PATH=$PATH drush @$app variable-set --exact maintenance_mode 1 
 sudo -u $app env PATH=$PATH drush @$app cache-clear all 
-sudo -u $app env PATH=$PATH drush @$app pm-update drupal
+sudo -u $app env PATH=$PATH drush @$app pm-update -y drupal
 sudo -u $app env PATH=$PATH drush @$app vset --exact maintenance_mode 0 
 sudo -u $app env PATH=$PATH drush @$app cache-clear all 
 sudo -u $app env PATH=$PATH drush @$app l10n-update-refresh
@@ -178,6 +178,13 @@ fi
 ynh_print_info --message="Reloading nginx web server..."
 
 systemctl reload nginx
+
+#=================================================
+# RESTART CRON
+#=================================================
+ynh_print_info --message="Restarting cron..."
+
+systemctl restart cron
 
 #=================================================
 # END OF SCRIPT
