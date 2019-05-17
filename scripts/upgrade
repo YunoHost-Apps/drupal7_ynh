@@ -114,6 +114,7 @@ ynh_add_fpm_config --phpversion="7.2"
 ynh_print_info --message="Updating PHP..."
 
 ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
+ynh_systemd_action --service_name=php7.2-fpm --action=reload
 
 #=================================================
 # UPDATE COMPOSER

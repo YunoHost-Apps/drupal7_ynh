@@ -116,8 +116,8 @@ mkdir -p "$final_path"
 #=================================================
 ynh_print_info --message="Installing PHP 7.2..."
 
-
 ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
+ynh_systemd_action --service_name=php7.2-fpm --action=reload
 
 #=================================================
 # CREATE DRUSH ALIAS
@@ -215,7 +215,6 @@ fi
 ynh_print_info --message="Reloading nginx web server..."
 
 ynh_systemd_action --service_name=nginx --action=reload
-ynh_systemd_action --service_name=php7.2-fpm --action=reload
 
 #=================================================
 # END OF SCRIPT
