@@ -35,21 +35,12 @@ ynh_print_info --message="Removing the MySQL database..."
 ynh_mysql_remove_db --db_user=$db_user --db_name=$db_name
 
 #=================================================
-# REMOVE PHP-FPM CONFIGURATION
-#=================================================
-ynh_print_info --message="Removing php-fpm configuration..."
-
-# Remove the dedicated php-fpm config
-ynh_remove_fpm_config
-
-#=================================================
 # REMOVE DEPENDENCIES
 #=================================================
 ynh_print_info --message="Removing dependencies..."
 
 # Remove metapackage and its dependencies
-#ynh_remove_app_dependencies
-ynh_remove_php
+ynh_remove_app_dependencies
 
 #=================================================
 # REMOVE APP MAIN DIR
@@ -68,13 +59,29 @@ ynh_print_info --message="Removing nginx web server configuration..."
 ynh_remove_nginx_config
 
 #=================================================
+# REMOVE PHP-FPM CONFIGURATION
+#=================================================
+ynh_print_info --message="Removing php-fpm configuration..."
+
+# Remove the dedicated php-fpm config
+ynh_remove_fpm_config
+
+#=================================================
 # SPECIFIC REMOVE
 #=================================================
 # REMOVE THE CRON FILE
 #=================================================
+ynh_print_info --message="Removing the cron file..."
 
 # Remove a cron file
 ynh_secure_remove --file="/etc/cron.d/$app"
+
+#=================================================
+# REMOVE PHP
+#=================================================
+ynh_print_info --message="Removing php..."
+
+ynh_remove_php
 
 #=================================================
 # GENERIC FINALIZATION

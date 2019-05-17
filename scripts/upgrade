@@ -88,8 +88,7 @@ ynh_add_nginx_config
 #=================================================
 ynh_print_info --message="Upgrading dependencies..."
 
-#ynh_install_app_dependencies $pkg_dependencies
-ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
+ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE DEDICATED USER
@@ -109,6 +108,13 @@ ynh_add_fpm_config --phpversion="7.2"
 
 #=================================================
 # SPECIFIC UPGRADE
+#=================================================
+# UPDATE PHP
+#=================================================
+ynh_print_info --message="Updating PHP..."
+
+ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
+
 #=================================================
 # UPDATE COMPOSER
 #=================================================

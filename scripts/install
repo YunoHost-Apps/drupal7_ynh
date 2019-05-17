@@ -65,9 +65,7 @@ ynh_app_setting_set --app=$app --key=install_profil --value=$install_profil
 #=================================================
 ynh_print_info --message="Installing dependencies..."
 
-ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
-
-#ynh_install_app_dependencies $pkg_dependencies
+ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE A MYSQL DATABASE
@@ -78,14 +76,6 @@ db_name=$(ynh_sanitize_dbid --db_name=$app)
 db_user=$db_name
 ynh_app_setting_set --app=$app --key=db_name --value=$db_name
 ynh_mysql_setup_db --db_user=$db_user --db_name=$db_name
-
-#=================================================
-# CREATE FINAL PATH
-#=================================================
-ynh_print_info --message="Creating final path..."
-
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-mkdir -p "$final_path"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -113,6 +103,22 @@ ynh_add_fpm_config --phpversion="7.2"
 
 #=================================================
 # SPECIFIC SETUP
+#=================================================
+# CREATE FINAL PATH
+#=================================================
+ynh_print_info --message="Creating final path..."
+
+ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+mkdir -p "$final_path"
+
+#=================================================
+# INSTALL PHP 7.2
+#=================================================
+ynh_print_info --message="Installing PHP 7.2..."
+
+
+ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
+
 #=================================================
 # CREATE DRUSH ALIAS
 #=================================================
@@ -209,6 +215,7 @@ fi
 ynh_print_info --message="Reloading nginx web server..."
 
 ynh_systemd_action --service_name=nginx --action=reload
+ynh_systemd_action --service_name=php7.2-fpm --action=reload
 
 #=================================================
 # END OF SCRIPT
