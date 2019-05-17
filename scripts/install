@@ -94,6 +94,13 @@ ynh_print_info --message="Configuring system user..."
 ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
+# INSTALL PHP 7.2
+#=================================================
+ynh_print_info --message="Installing PHP 7.2..."
+
+ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
+
+#=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
 ynh_print_info --message="Configuring php-fpm..."
@@ -110,14 +117,6 @@ ynh_print_info --message="Creating final path..."
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 mkdir -p "$final_path"
-
-#=================================================
-# INSTALL PHP 7.2
-#=================================================
-ynh_print_info --message="Installing PHP 7.2..."
-
-ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
-ynh_systemd_action --service_name=php7.2-fpm --action=reload
 
 #=================================================
 # CREATE DRUSH ALIAS

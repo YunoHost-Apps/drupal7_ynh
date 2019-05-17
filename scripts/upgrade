@@ -99,6 +99,13 @@ ynh_print_info --message="Making sure dedicated system user exists..."
 ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
+# UPDATE PHP
+#=================================================
+ynh_print_info --message="Updating PHP..."
+
+ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
+
+#=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
 ynh_print_info --message="Upgrading php-fpm configuration..."
@@ -108,14 +115,6 @@ ynh_add_fpm_config --phpversion="7.2"
 
 #=================================================
 # SPECIFIC UPGRADE
-#=================================================
-# UPDATE PHP
-#=================================================
-ynh_print_info --message="Updating PHP..."
-
-ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
-ynh_systemd_action --service_name=php7.2-fpm --action=reload
-
 #=================================================
 # UPDATE COMPOSER
 #=================================================
