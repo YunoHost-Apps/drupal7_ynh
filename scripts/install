@@ -101,14 +101,6 @@ ynh_print_info --message="Installing PHP 7.2..."
 ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
 
 #=================================================
-# PHP-FPM CONFIGURATION
-#=================================================
-ynh_print_info --message="Configuring php-fpm..."
-
-# Create a dedicated php-fpm config
-ynh_add_fpm_config --phpversion="7.2"
-
-#=================================================
 # SPECIFIC SETUP
 #=================================================
 # CREATE FINAL PATH
@@ -189,6 +181,14 @@ ynh_store_file_checksum --file="$final_path/$app/sites/default/settings.php"
 
 #=================================================
 # GENERIC FINALIZATION
+#=================================================
+# PHP-FPM CONFIGURATION
+#=================================================
+ynh_print_info --message="Configuring php-fpm..."
+
+# Create a dedicated php-fpm config
+ynh_add_fpm_config --phpversion="7.2"
+
 #=================================================
 # SECURE FILES AND DIRECTORIES
 #=================================================
