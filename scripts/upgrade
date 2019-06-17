@@ -99,9 +99,9 @@ ynh_print_info --message="Making sure dedicated system user exists..."
 ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
-# UPDATE PHP
+# UPGRADE PHP
 #=================================================
-ynh_print_info --message="Updating PHP..."
+ynh_print_info --message="Upgrading PHP..."
 
 ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
 
@@ -116,17 +116,18 @@ ynh_add_fpm_config --phpversion="7.2"
 #=================================================
 # SPECIFIC UPGRADE
 #=================================================
-# UPDATE COMPOSER
+# UPGRADE COMPOSER
 #=================================================
-ynh_print_info --message="Updating Composer..."
+ynh_print_info --message="Upgrading Composer..."
 
 ynh_install_composer --phpversion="7.2" --workdir="$final_path/.composer"
 
 #=================================================
-# UPDATE DRUPAL
+# UPGRADE DRUPAL
 #=================================================
-ynh_print_info --message="Updating Drupal..."
+ynh_print_info --message="Upgrading Drupal..."
 
+ynh_backup_if_checksum_is_different --file="$final_path/$app/sites/default/settings.php"
 export PATH="$final_path/.composer/vendor/bin:$PATH"
 
 sudo -u $app env PATH=$PATH drush @$app variable-set --exact maintenance_mode 1 
@@ -141,7 +142,6 @@ sudo -u $app env PATH=$PATH drush @$app l10n-update
 # STORE THE CONFIG FILE CHECKSUM
 #=================================================
 
-ynh_backup_if_checksum_is_different --file="$final_path/$app/sites/default/settings.php"
 # Recalculate and store the checksum of the file for the next upgrade.
 ynh_store_file_checksum --file="$final_path/$app/sites/default/settings.php"
 

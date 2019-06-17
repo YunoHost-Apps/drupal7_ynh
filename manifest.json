@@ -6,7 +6,7 @@
         "en": "Drupal 7 for YunoHost application.",
         "fr": "Drupal 7 pour YunoHost."
     },
-    "version": "7.0~ynh1",
+    "version": "7.67~ynh1",
     "url": "https://www.drupal.org",
     "license": "GPL-2.0-or-later",
     "maintainer": {
