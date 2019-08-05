@@ -144,6 +144,8 @@ ynh_print_info --message="Installing Drupal..."
 
 chown -R $app: $final_path
 
+update-alternatives --set php /usr/bin/php7.2
+
 pushd "$final_path"    
 	sudo -u $app env PATH=$PATH drush pm-download drupal-7 --drupal-project-rename=$app
 popd
@@ -161,6 +163,8 @@ sudo -u $app env PATH=$PATH drush @$app l10n-update-refresh
 sudo -u $app env PATH=$PATH drush @$app l10n-update
 sudo -u $app env PATH=$PATH drush @$app pm-update
 sudo -u $app env PATH=$PATH drush @$app core-cron
+
+update-alternatives --set php /usr/bin/php7.0
 
 #=================================================
 # SETUP THE CRON FILE
