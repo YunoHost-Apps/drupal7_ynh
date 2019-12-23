@@ -3,8 +3,8 @@
     "id": "drupal7",
     "packaging_format": 1,
     "description": {
-        "en": "A content management framework written in PHP",
-        "fr": "Un système de gestion de contenu écrit en PHP"
+        "en": "Old version of a content management framework written in PHP",
+        "fr": "Ancienne version d'un système de gestion de contenu écrit en PHP"
     },
     "version": "7.67~ynh1",
     "url": "https://www.drupal.org",
