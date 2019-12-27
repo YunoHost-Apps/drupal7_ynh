@@ -130,6 +130,8 @@ ynh_print_info --message="Upgrading Drupal..."
 ynh_backup_if_checksum_is_different --file="$final_path/$app/sites/default/settings.php"
 export PATH="$final_path/.composer/vendor/bin:$PATH"
 
+update-alternatives --set php /usr/bin/php7.2
+
 sudo -u $app env PATH=$PATH drush @$app variable-set --exact maintenance_mode 1 
 sudo -u $app env PATH=$PATH drush @$app cache-clear all 
 sudo -u $app env PATH=$PATH drush @$app pm-update -y drupal
@@ -137,6 +139,8 @@ sudo -u $app env PATH=$PATH drush @$app vset --exact maintenance_mode 0
 sudo -u $app env PATH=$PATH drush @$app cache-clear all 
 sudo -u $app env PATH=$PATH drush @$app l10n-update-refresh
 sudo -u $app env PATH=$PATH drush @$app l10n-update
+
+update-alternatives --set php /usr/bin/php7.0
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
