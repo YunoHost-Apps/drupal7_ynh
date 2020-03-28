@@ -143,15 +143,13 @@ ynh_backup_if_checksum_is_different --file="$final_path/$app/sites/default/setti
 export PATH="$final_path/.composer/vendor/bin:$PATH"
 
 update-alternatives --set php /usr/bin/php7.3
-
 sudo -u $app env PATH=$PATH drush @$app variable-set --exact maintenance_mode 1 
 sudo -u $app env PATH=$PATH drush @$app cache-clear all 
 sudo -u $app env PATH=$PATH drush @$app pm-update -y drupal
-sudo -u $app env PATH=$PATH drush @$app vset --exact maintenance_mode 0 
 sudo -u $app env PATH=$PATH drush @$app cache-clear all 
 sudo -u $app env PATH=$PATH drush @$app l10n-update-refresh
 sudo -u $app env PATH=$PATH drush @$app l10n-update
-
+sudo -u $app env PATH=$PATH drush @$app variable-set --exact maintenance_mode 0 
 update-alternatives --set php /usr/bin/php7.0
 
 #=================================================
@@ -172,7 +170,7 @@ cp -f ../conf/cron /etc/cron.d/$app
 ynh_replace_string --match_string="__FINALPATH__" --replace_string="$final_path" --target_file="/etc/cron.d/$app"
 ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="/etc/cron.d/$app"
 
-ynh_systemd_action --service_name=cron --action=restart
+ynh_systemd_action --service_name=cron --action=reload
 
 #=================================================
 # GENERIC FINALIZATION
