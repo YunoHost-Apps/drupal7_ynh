@@ -65,6 +65,17 @@ ynh_app_setting_set --app=$app --key=install_profil --value=$install_profil
 #=================================================
 # STANDARD MODIFICATIONS
 #=================================================
+# INSTALL PHP7.3
+#=================================================
+
+if [ "$(lsb_release --codename --short)" = "buster" ]; then
+	pkg_dependencies="$pkg_dependencies $extra_pkg_dependencies"
+else
+	ynh_print_info --message="Installing PHP7.3..."
+	ynh_install_php --phpversion="7.3" --package="$extra_pkg_dependencies"
+fi
+
+#=================================================
 # INSTALL DEPENDENCIES
 #=================================================
 ynh_print_info --message="Installing dependencies..."
@@ -96,13 +107,6 @@ ynh_print_info --message="Configuring system user..."
 
 # Create a system user
 ynh_system_user_create --username=$app --home_dir="$final_path"
-
-#=================================================
-# INSTALL PHP 7.2
-#=================================================
-ynh_print_info --message="Installing PHP 7.2..."
-
-ynh_install_php --phpversion="7.2" --package="$extra_pkg_dependencies"
 
 #=================================================
 # SPECIFIC SETUP
@@ -137,7 +141,7 @@ mkdir -p "$final_path/.composer"
 
 cp -f "../conf/composer.json" "$final_path/.composer/composer.json"
 
-ynh_install_composer --phpversion="7.2" --workdir="$final_path/.composer"
+ynh_install_composer --phpversion="7.3" --workdir="$final_path/.composer"
 
 export PATH="$final_path/.composer/vendor/bin:$PATH"
 
@@ -148,7 +152,7 @@ ynh_print_info --message="Installing Drupal..."
 
 chown -R $app: $final_path
 
-update-alternatives --set php /usr/bin/php7.2
+update-alternatives --set php /usr/bin/php7.3
 
 pushd "$final_path"    
 	sudo -u $app env PATH=$PATH drush pm-download drupal-7 --drupal-project-rename=$app
@@ -173,7 +177,7 @@ update-alternatives --set php /usr/bin/php7.0
 #=================================================
 # SETUP THE CRON FILE
 #=================================================
-ynh_print_info --message="Setuping the cron file"
+ynh_print_info --message="Setuping the cron file..."
 
 cp ../conf/cron /etc/cron.d/$app
 
@@ -196,7 +200,7 @@ ynh_store_file_checksum --file="$final_path/$app/sites/default/settings.php"
 ynh_print_info --message="Configuring php-fpm..."
 
 # Create a dedicated php-fpm config
-ynh_add_fpm_config --phpversion="7.2"
+ynh_add_fpm_config --phpversion="7.3"
 
 #=================================================
 # SECURE FILES AND DIRECTORIES

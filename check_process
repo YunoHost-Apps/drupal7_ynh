@@ -15,7 +15,8 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
-		upgrade=1	from_commit=89bf310b8ac87a61e5974508f2b41fbb32823e95
+		# 7
+		# upgrade=1	from_commit=89bf310b8ac87a61e5974508f2b41fbb32823e95
 		backup_restore=1
 		multi_instance=1
 		# This test is no longer necessary since the version 2.7 (PR: https://github.com/YunoHost/yunohost/pull/304), you can still do it if your app could be installed with this version.
