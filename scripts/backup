@@ -53,7 +53,7 @@ ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 #=================================================
 ynh_print_info --message="Backing up php-fpm configuration..."
 
-ynh_backup --src_path="/etc/php/7.2/fpm/pool.d/$app.conf"
+ynh_backup --src_path="/etc/php/7.3/fpm/pool.d/$app.conf"
 
 #=================================================
 # BACKUP THE MYSQL DATABASE
@@ -67,6 +67,7 @@ ynh_mysql_dump_db --database="$db_name" > db.sql
 #=================================================
 # BACKUP A CRON FILE
 #=================================================
+ynh_print_info --message="Backing up a cron file..."
 
 ynh_backup --src_path="/etc/cron.d/$app"
 
