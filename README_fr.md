@@ -1,12 +1,12 @@
 # Drupal 7 pour YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/drupal7.svg)](https://dash.yunohost.org/appci/app/drupal7)  
-[![Install Drupal 7 with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=drupal7)
+[![Niveau d'intégration](https://dash.yunohost.org/integration/drupal7.svg)](https://dash.yunohost.org/appci/app/drupal7) ![](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)  
+[![Installer Drupal 7 avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=drupal7)
 
 *[Read this readme in english.](./README.md)* 
 
 > *Ce package vous permet d'installer Drupal 7 rapidement et simplement sur un serveur Yunohost.  
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install) pour apprendre comment l'installer.*
 
 ## Vue d'ensemble
 Framework de gestion de contenu libre et open-source.
@@ -23,11 +23,11 @@ Framework de gestion de contenu libre et open-source.
 
 ## Caractéristiques spécifiques YunoHost
 
-#### Support multi-utilisateurs
+#### Support multi-utilisateur
 
-le module d'authentification LDAP peut être installé
+Le module d'authentification LDAP peut être installé
 
-#### Supported architectures
+#### Architectures supportées
 
 * x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/drupal7%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/)
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/drupal7%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/drupal7/)
