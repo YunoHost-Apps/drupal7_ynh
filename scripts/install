@@ -94,6 +94,14 @@ ynh_script_progression --message="Configuring system user..."
 ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
+# CREATE FINAL PATH
+#=================================================
+ynh_script_progression --message="Creating final path..."
+
+ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+mkdir -p "$final_path/$app"
+
+#=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
 ynh_script_progression --message="Configuring php-fpm..."
@@ -104,14 +112,6 @@ phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # SPECIFIC SETUP
-#=================================================
-# CREATE FINAL PATH
-#=================================================
-ynh_script_progression --message="Creating final path..."
-
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-mkdir -p "$final_path"
-
 #=================================================
 # CREATE DRUSH ALIAS
 #=================================================
@@ -148,7 +148,7 @@ chown -R $app: $final_path
 
 update-alternatives --set php /usr/bin/php$phpversion
 
-pushd "$final_path"    
+pushd "$final_path"
 	sudo -u $app env PATH=$PATH drush pm-download -y drupal-7 --drupal-project-rename=$app
 popd
 
