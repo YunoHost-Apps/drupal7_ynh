@@ -6,7 +6,7 @@
         "en": "Old version of a content management framework written in PHP",
         "fr": "Ancienne version d'un système de gestion de contenu écrit en PHP"
     },
-    "version": "7.73~ynh1",
+    "version": "7.78~ynh1",
     "url": "https://www.drupal.org",
     "license": "GPL-2.0-or-later",
     "maintainer": {
