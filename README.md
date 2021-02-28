@@ -23,7 +23,7 @@ Free and open-source content management framework.
 
 ## YunoHost specific features
 
-#### Multi-users support
+#### Multi-user support
 
 LDAP module can be installed
 
