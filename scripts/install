@@ -78,6 +78,14 @@ ynh_app_setting_set --app=$app --key=db_name --value=$db_name
 ynh_mysql_setup_db --db_user=$db_user --db_name=$db_name
 
 #=================================================
+# CREATE FINAL PATH
+#=================================================
+ynh_script_progression --message="Creating final path..."
+
+ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+mkdir -p "$final_path/$app"
+
+#=================================================
 # NGINX CONFIGURATION
 #=================================================
 ynh_script_progression --message="Configuring nginx web server..."
@@ -92,14 +100,6 @@ ynh_script_progression --message="Configuring system user..."
 
 # Create a system user
 ynh_system_user_create --username=$app --home_dir="$final_path"
-
-#=================================================
-# CREATE FINAL PATH
-#=================================================
-ynh_script_progression --message="Creating final path..."
-
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-mkdir -p "$final_path/$app"
 
 #=================================================
 # PHP-FPM CONFIGURATION
@@ -118,13 +118,8 @@ phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 ynh_script_progression --message="Creating Drush alias..."
 
 mkdir -p "$final_path/.drush"
-drush_aliasconfig="$final_path/.drush/$app.aliases.drushrc.php"
-cp -f "../conf/yoursite.aliases.drushrc.php" "$drush_aliasconfig"
 
-ynh_replace_string --match_string="__FINALPATH__" --replace_string="$final_path" --target_file="$drush_aliasconfig"
-ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="$drush_aliasconfig"
-ynh_replace_string --match_string="__DOMAIN__" --replace_string="$domain" --target_file="$drush_aliasconfig"
-ynh_replace_string --match_string="__PATH_URL__" --replace_string="$path_url" --target_file="$drush_aliasconfig"
+ynh_add_config --template="../conf/yoursite.aliases.drushrc.php" --destination="$final_path/.drush/$app.aliases.drushrc.php"
 
 #=================================================
 # INSTALL COMPOSER
@@ -133,7 +128,7 @@ ynh_script_progression --message="Installing Composer..."
 
 mkdir -p "$final_path/.composer"
 
-cp -f "../conf/composer.json" "$final_path/.composer/composer.json"
+ynh_add_config --template="../conf/composer.json" --destination="$final_path/.composer/composer.json"
 
 ynh_install_composer --phpversion="$phpversion" --workdir="$final_path/.composer"
 
@@ -173,10 +168,7 @@ update-alternatives --set php /usr/bin/php${YNH_DEFAULT_PHP_VERSION}
 #=================================================
 ynh_script_progression --message="Setuping the cron file..."
 
-cp ../conf/cron /etc/cron.d/$app
-
-ynh_replace_string --match_string="__FINALPATH__" --replace_string="$final_path" --target_file="/etc/cron.d/$app"
-ynh_replace_string --match_string="__APP__" --replace_string="$app" --target_file="/etc/cron.d/$app"
+ynh_add_config --template="../conf/cron" --destination="/etc/cron.d/$app"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
@@ -199,13 +191,14 @@ chown -R $app: $final_path
 #=================================================
 # SETUP SSOWAT
 #=================================================
-ynh_script_progression --message="Configuring SSOwat..."
+ynh_script_progression --message="Configuring permissions..."
 
 # Make app public if necessary
 if [ $is_public -eq 1 ]
 then
-	# unprotected_uris allows SSO credentials to be passed anyway.
-	ynh_app_setting_set --app=$app --key=unprotected_uris --value="/"
+	# Everyone can access the app.
+	# The "main" permission is automatically created before the install script.
+	ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================
