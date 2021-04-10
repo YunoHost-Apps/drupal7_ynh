@@ -94,6 +94,13 @@ phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 #=================================================
 # SPECIFIC UPGRADE
 #=================================================
+# SETUP THE CRON FILE
+#=================================================
+ynh_script_progression --message="Setuping the cron file"
+
+ynh_add_config --template="../conf/cron" --destination="/etc/cron.d/$app"
+
+#=================================================
 # UPGRADE COMPOSER
 #=================================================
 ynh_script_progression --message="Upgrading Composer..."
@@ -120,20 +127,11 @@ ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app variable-set --exact 
 
 update-alternatives --set php /usr/bin/php${YNH_DEFAULT_PHP_VERSION}
 
-#=================================================
-# STORE THE CONFIG FILE CHECKSUM
-#=================================================
-ynh_script_progression --message="Storing the config file checksum..."
-
-# Recalculate and store the checksum of the file for the next upgrade.
 ynh_store_file_checksum --file="$final_path/$app/sites/default/settings.php"
 
-#=================================================
-# SETUP THE CRON FILE
-#=================================================
-ynh_script_progression --message="Setuping the cron file"
-
-ynh_add_config --template="../conf/cron" --destination="/etc/cron.d/$app"
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R root:$app "$final_path"
 
 #=================================================
 # GENERIC FINALIZATION
