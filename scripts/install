@@ -54,7 +54,6 @@ ynh_script_progression --message="Storing installation settings..."
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=admin --value=$admin
-ynh_app_setting_set --app=$app --key=is_public --value=$is_public
 ynh_app_setting_set --app=$app --key=language --value=$language
 ynh_app_setting_set --app=$app --key=install_profil --value=$install_profil
 
@@ -93,7 +92,7 @@ ynh_script_progression --message="Creating final path..."
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 mkdir -p "$final_path/$app"
 
-chmod 750 "$final_path"
+chmod -R 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
@@ -143,7 +142,7 @@ export PATH="$final_path/.composer/vendor/bin:$PATH"
 #=================================================
 ynh_script_progression --message="Installing Drupal..."
 
-chmod 750 "$final_path"
+chmod -R 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
@@ -151,23 +150,29 @@ update-alternatives --set php /usr/bin/php$phpversion
 
 pushd "$final_path"
 	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush pm-download -y drupal-7 --drupal-project-rename=$app
+
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app site-install $install_profil --account-name=$admin --account-pass=$password --account-mail=$admin_mail --db-url=mysql://$db_user:$db_pwd@localhost/$db_name --site-name="$app" --locale=$language --yes
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-download drush_language
+	#ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-download ldap
+	#ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-enable -y ldap_servers ldap_user ldap_authentication ldap_authorization ldap_authorization_drupal_role
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-download l10n_update
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-enable -y l10n_update
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app language-add $language
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app language-default $language
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app cache-clear drush
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app l10n-update-refresh
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app l10n-update
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-update
+	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app core-cron
+
+	chmod -R 750 "$final_path"
+	chmod -R o-rwx "$final_path"
+	chown -R $app:www-data "$final_path"
 popd
 
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app site-install $install_profil --account-name=$admin --account-pass=$password --account-mail=$admin_mail --db-url=mysql://$db_user:$db_pwd@localhost/$db_name --site-name="$app" --locale=$language --yes
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-download drush_language
-#ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-download ldap
-#ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-enable -y ldap_servers ldap_user ldap_authentication ldap_authorization ldap_authorization_drupal_role
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-download l10n_update
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-enable -y l10n_update
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app language-add $language
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app language-default $language
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app cache-clear drush
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app l10n-update-refresh
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app l10n-update
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-update
-ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app core-cron
-
 update-alternatives --set php /usr/bin/php${YNH_DEFAULT_PHP_VERSION}
+
+ynh_store_file_checksum --file="$final_path/$app/sites/default/settings.php"
 
 #=================================================
 # SETUP THE CRON FILE
@@ -175,14 +180,6 @@ update-alternatives --set php /usr/bin/php${YNH_DEFAULT_PHP_VERSION}
 ynh_script_progression --message="Setuping the cron file..."
 
 ynh_add_config --template="../conf/cron" --destination="/etc/cron.d/$app"
-
-#=================================================
-# STORE THE CONFIG FILE CHECKSUM
-#=================================================
-ynh_script_progression --message="Storing the config file checksum..."
-
-# Calculate and store the config file checksum into the app settings
-ynh_store_file_checksum --file="$final_path/$app/sites/default/settings.php"
 
 #=================================================
 # GENERIC FINALIZATION
