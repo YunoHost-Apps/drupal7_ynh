@@ -92,7 +92,7 @@ ynh_script_progression --message="Creating final path..."
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 mkdir -p "$final_path/$app"
 
-chmod -R 750 "$final_path"
+chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
@@ -142,7 +142,7 @@ export PATH="$final_path/.composer/vendor/bin:$PATH"
 #=================================================
 ynh_script_progression --message="Installing Drupal..."
 
-chmod -R 750 "$final_path"
+chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
@@ -165,7 +165,7 @@ pushd "$final_path"
 	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app pm-update
 	ynh_exec_warn_less sudo -u $app env PATH=$PATH drush @$app core-cron
 
-	chmod -R 750 "$final_path"
+	chmod 750 "$final_path"
 	chmod -R o-rwx "$final_path"
 	chown -R $app:www-data "$final_path"
 popd
