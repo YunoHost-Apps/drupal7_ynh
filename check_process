@@ -16,9 +16,9 @@
 		setup_public=1
 		upgrade=1
 		# 7.0~ynh1
-		#upgrade=1	from_commit=89bf310b8ac87a61e5974508f2b41fbb32823e95
+		upgrade=1	from_commit=89bf310b8ac87a61e5974508f2b41fbb32823e95
 		# 7.73~ynh1
-		#upgrade=1	from_commit=6c565bad2d6083eac25eaee126d9eb32595d94b4
+		upgrade=1	from_commit=6c565bad2d6083eac25eaee126d9eb32595d94b4
 		# 7.78~ynh1
 		upgrade=1	from_commit=868272f6dfc0a0ccac75982b224628564f10123e
 		backup_restore=1
