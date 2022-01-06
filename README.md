@@ -11,15 +11,8 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 ## Overview
 Free and open-source content management framework.
 
-**Shipped version:** 7.80
 
-## Screenshots
 
-![](https://www.drupal.org/files/issues/D7-screenshot.png)
-
-## Documentation
-
- * Official documentation: https://www.drupal.org/docs/7
 
 ## YunoHost specific features
 
@@ -27,26 +20,3 @@ Free and open-source content management framework.
 
 LDAP module can be installed
 
-#### Supported architectures
-
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/drupal7.svg)](https://ci-apps-arm.yunohost.org/ci/apps/drupal7/)
-
-## Links
-
- * Report a bug: https://github.com/YunoHost-Apps/drupal7_ynh/issues
- * App website: https://www.drupal.org
- * YunoHost website: https://yunohost.org/
-
----
-
-## Developer info
-
-Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/drupal7_ynh/tree/testing).
-
-To try the testing branch, please proceed like that.
-```
-sudo yunohost app install https://github.com/YunoHost-Apps/drupal7_ynh/tree/testing --debug
-or
-sudo yunohost app upgrade drupal7 -u https://github.com/YunoHost-Apps/drupal7_ynh/tree/testing --debug
-```

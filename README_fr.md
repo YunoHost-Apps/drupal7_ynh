@@ -11,7 +11,7 @@ Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install
 ## Vue d'ensemble
 Framework de gestion de contenu libre et open-source.
 
-**Version incluse:** 7.80
+**Version incluse:** 7.84
 
 ## Captures d'écran
 
