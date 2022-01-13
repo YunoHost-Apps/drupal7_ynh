@@ -11,7 +11,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 ## Overview
 Free and open-source content management framework.
 
-**Shipped version:** 7.80
+**Shipped version:** 7.84
 
 ## Screenshots
 
