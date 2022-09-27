@@ -2,9 +2,9 @@
 	; Manifest
 		domain="domain.tld"
 		path="/path"
-		admin="john"
-		language="en"
 		is_public=1
+		language="en"
+		admin="john"
 		password="pass"
 		install_profil="minimal"
 	; Checks

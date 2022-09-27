@@ -6,12 +6,13 @@
         "en": "Old version of a content management framework written in PHP",
         "fr": "Ancienne version d'un système de gestion de contenu écrit en PHP"
     },
-    "version": "7.84~ynh1",
+    "version": "7.92~ynh1",
     "url": "https://www.drupal.org",
     "upstream": {
         "license": "GPL-2.0-or-later",
         "website": "https://www.drupal.org",
-        "userdoc": "https://www.drupal.org/docs/7"
+        "userdoc": "https://www.drupal.org/docs/7",
+        "code": "https://github.com/drupal/drupal"
     },
     "license": "GPL-2.0-or-later",
     "maintainer": {
@@ -27,7 +28,7 @@
         "mysql"
     ],
     "arguments": {
-        "install" : [
+        "install": [
             {
                 "name": "domain",
                 "type": "domain"
@@ -37,10 +38,6 @@
                 "type": "path",
                 "example": "/drupal7",
                 "default": "/drupal7"
-            },
-            {
-                "name": "admin",
-                "type": "user"
             },
             {
                 "name": "is_public",
@@ -54,8 +51,15 @@
                     "en": "Choose the application language",
                     "fr": "Choisissez la langue de l'application"
                 },
-                "choices": ["fr", "en"],
+                "choices": [
+                    "fr",
+                    "en"
+                ],
                 "default": "en"
+            },
+            {
+                "name": "admin",
+                "type": "user"
             },
             {
                 "name": "password",
@@ -69,7 +73,10 @@
                     "en": "Choose the Drupal 7 install profile to use",
                     "fr": "Choisissez le profile d'installation de Drupal 7"
                 },
-                "choices": ["minimal", "standard"],
+                "choices": [
+                    "minimal",
+                    "standard"
+                ],
                 "default": "standard"
             }
         ]
