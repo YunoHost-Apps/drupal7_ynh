@@ -19,7 +19,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 Framework de gestion de contenu libre et open-source.
 
 
-**Version incluse :** 7.97~ynh1
+**Version incluse :** 7.98~ynh1
 
 ## Captures d’écran
 
