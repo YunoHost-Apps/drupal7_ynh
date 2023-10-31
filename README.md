@@ -34,7 +34,7 @@ Free and open-source content management framework.
 * Official app website: <https://www.drupal.org>
 * Official user documentation: <https://www.drupal.org/docs/7>
 * Upstream app code repository: <https://github.com/drupal/drupal>
-* YunoHost documentation for this app: <https://yunohost.org/app_drupal7>
+* YunoHost Store: <https://apps.yunohost.org/app/drupal7>
 * Report a bug: <https://github.com/YunoHost-Apps/drupal7_ynh/issues>
 
 ## Developer info
