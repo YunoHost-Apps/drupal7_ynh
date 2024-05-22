@@ -79,6 +79,7 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
         "php7.4-mbstring",
         "curl",
         "libzip-dev",
+        "mariadb-server",
     ]
 
     [resources.database]
