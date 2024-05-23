@@ -19,15 +19,11 @@
 Free and open-source content management framework.
 
 
-**分发版本：** 7.98~ynh2
+**分发版本：** 7.98~ynh3
 
 ## 截图
 
 ![Drupal 7 的截图](./doc/screenshots/screenshot.png)
-
-## 免责声明 / 重要信息
-
-* LDAP module can be installed
 
 ## 文档与资源
 

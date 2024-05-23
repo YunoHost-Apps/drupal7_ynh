@@ -19,15 +19,11 @@ It shall NOT be edited by hand.
 Free and open-source content management framework.
 
 
-**Shipped version:** 7.98~ynh2
+**Shipped version:** 7.98~ynh3
 
 ## Screenshots
 
 ![Screenshot of Drupal 7](./doc/screenshots/screenshot.png)
-
-## Disclaimers / important information
-
-* LDAP module can be installed
 
 ## Documentation and resources
 
