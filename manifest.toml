@@ -1,0 +1,86 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "drupal7"
+name = "Drupal 7"
+description.en = "Old version of a content management framework written in PHP"
+description.fr = "Ancienne version d'un système de gestion de contenu écrit en PHP"
+
+version = "7.98~ynh3"
+
+maintainers = ["yalh76"]
+
+[upstream]
+license = "GPL-2.0-or-later"
+website = "https://www.drupal.org"
+userdoc = "https://www.drupal.org/docs/7"
+code = "https://github.com/drupal/drupal"
+cpe = "cpe:2.3:a:drupal:drupal"
+
+[integration]
+yunohost = ">=11.2"
+architectures = "all"
+multi_instance = true
+ldap = true
+sso = true
+disk = "50M" # FIXME: replace with an **estimate** minimum disk requirement. e.g. 20M, 400M, 1G, ...
+ram.build = "50M" # FIXME: replace with an **estimate** minimum ram requirement. e.g. 50M, 400M, 1G, ...
+ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requirement. e.g. 50M, 400M, 1G, ...
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/drupal7"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.language]
+    ask.en = "Choose the application language"
+    ask.fr = "Choisissez la langue de l'application"
+    type = "string"
+    choices = ["fr", "en"]
+    default = "en"
+
+    [install.admin]
+    type = "user"
+
+    [install.password]
+    type = "password"
+
+    [install.install_profil]
+    ask.en = "Choose the Drupal 7 install profile to use"
+    ask.fr = "Choisissez le profile d'installation de Drupal 7"
+    type = "string"
+    choices = ["minimal", "standard"]
+    default = "standard"
+
+[resources]
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = [
+        "php7.4-fpm",
+        "php7.4-cli",
+        "php7.4-gd",
+        "php7.4-mysql",
+        "php7.4-xml",
+        "php7.4-ldap",
+        "php7.4-mbstring",
+        "curl",
+        "libzip-dev",
+        "mariadb-server",
+    ]
+
+    [resources.database]
+    type = "mysql"

@@ -19,15 +19,11 @@ Il NE doit PAS être modifié à la main.
 Framework de gestion de contenu libre et open-source.
 
 
-**Version incluse :** 7.98~ynh2
+**Version incluse :** 7.98~ynh3
 
 ## Captures d’écran
 
 ![Capture d’écran de Drupal 7](./doc/screenshots/screenshot.png)
-
-## Avertissements / informations importantes
-
-* Le module d'authentification LDAP peut être installé
 
 ## Documentations et ressources
 

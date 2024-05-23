@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install Drupal 7 with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install Drupal 7 quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -19,15 +19,11 @@ It shall NOT be edited by hand.
 Free and open-source content management framework.
 
 
-**Shipped version:** 7.98~ynh2
+**Shipped version:** 7.98~ynh3
 
 ## Screenshots
 
 ![Screenshot of Drupal 7](./doc/screenshots/screenshot.png)
-
-## Disclaimers / important information
-
-* LDAP module can be installed
 
 ## Documentation and resources
 
