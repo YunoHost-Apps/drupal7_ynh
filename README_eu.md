@@ -19,15 +19,11 @@ EZ editatu eskuz.
 Free and open-source content management framework.
 
 
-**Paketatutako bertsioa:** 7.98~ynh2
+**Paketatutako bertsioa:** 7.98~ynh3
 
 ## Pantaila-argazkiak
 
 ![Drupal 7(r)en pantaila-argazkia](./doc/screenshots/screenshot.png)
-
-## Ezespena / informazio garrantzitsua
-
-* LDAP module can be installed
 
 ## Dokumentazioa eta baliabideak
 
