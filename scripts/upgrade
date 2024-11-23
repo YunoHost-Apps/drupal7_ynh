@@ -45,7 +45,7 @@ ynh_config_add --template="yoursite.aliases.drushrc.php" --destination="$install
 #=================================================
 ynh_script_progression "Upgrading Drupal..."
 
-ynh_backup_if_checksum_is_different "$install_dir/$app/sites/default/settings.php"
+ynh_backup_if_checksum_is_different "$install_dir/web/sites/default/settings.php"
 
 pushd "$install_dir"
 	_ynh_exec_with_drush_php drush "@$app" variable-set --exact maintenance_mode 1
@@ -58,7 +58,7 @@ pushd "$install_dir"
 	_ynh_exec_with_drush_php drush "@$app" variable-set --exact maintenance_mode 0
 popd
 
-ynh_store_file_checksum "$install_dir/$app/sites/default/settings.php"
+ynh_store_file_checksum "$install_dir/web/sites/default/settings.php"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
