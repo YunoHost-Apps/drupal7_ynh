@@ -21,7 +21,7 @@ It shall NOT be edited by hand.
 Free and open-source content management framework.
 
 
-**Shipped version:** 7.102~ynh2
+**Shipped version:** 7.102~ynh1
 
 ## Screenshots
 
