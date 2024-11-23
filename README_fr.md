@@ -21,7 +21,7 @@ Il NE doit PAS être modifié à la main.
 Framework de gestion de contenu libre et open-source.
 
 
-**Version incluse :** 7.102~ynh1
+**Version incluse :** 7.102~ynh2
 
 ## Captures d’écran
 
