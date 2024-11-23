@@ -7,34 +7,34 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-ynh_app_setting_set --key=php_upload_max_filesize --value=512M
-
-ynh_app_setting_set --key=php_memory_limit --value=512M
-
 #=================================================
 # INITIALIZE AND STORE SETTINGS
 #=================================================
 
 admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
 
+ynh_app_setting_set --key=php_upload_max_filesize --value=512M
+ynh_app_setting_set --key=php_post_max_size --value=512M
+ynh_app_setting_set --key=php_memory_limit --value=512M
+
 #=================================================
 # INSTALL COMPOSER
 #=================================================
 ynh_script_progression "Installing Composer..."
 
-mkdir -p "$install_dir/.composer"
-ynh_config_add --template="composer.json" --destination="$install_dir/.composer/composer.json"
+composer_workdir="$install_dir/.composer"
+install -d -m 750 -o $app -g $app $composer_workdir
+ynh_config_add --template="composer.json" --destination="$composer_workdir/composer.json"
 
 ynh_composer_install
-ynh_composer_exec install --no-dev  # FIXMEhelpers2.1 (replace with composer_workdir=... prior to calling this helper, default is $intall_dir) --workdir="$install_dir/.composer"
+ynh_composer_exec install --no-dev
 
 #=================================================
 # CREATE DRUSH ALIAS
 #=================================================
 ynh_script_progression "Creating Drush alias..."
 
-mkdir -p "$install_dir/.drush"
-
+install -d -m 750 -o $app -g $app "$install_dir/.drush"
 ynh_config_add --template="yoursite.aliases.drushrc.php" --destination="$install_dir/.drush/$app.aliases.drushrc.php"
 
 #=================================================
@@ -42,11 +42,8 @@ ynh_config_add --template="yoursite.aliases.drushrc.php" --destination="$install
 #=================================================
 ynh_script_progression "Installing Drupal..."
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 750 "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 pushd "$install_dir"
-	_ynh_exec_with_drush_php drush pm-download -y drupal-7 --drupal-project-rename=$app
+	_ynh_exec_with_drush_php drush pm-download -y drupal-7 --drupal-project-rename=web
 
 	_ynh_exec_with_drush_php drush "@$app" site-install $install_profil \
 			--account-name="$admin" \
@@ -68,10 +65,6 @@ pushd "$install_dir"
 	_ynh_exec_with_drush_php drush "@$app" l10n-update
 	_ynh_exec_with_drush_php drush "@$app" pm-update
 	_ynh_exec_with_drush_php drush "@$app" core-cron
-
-	#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 750 "$install_dir"
-	#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-	#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 popd
 
 ynh_store_file_checksum "$install_dir/$app/sites/default/settings.php"
@@ -81,10 +74,10 @@ ynh_store_file_checksum "$install_dir/$app/sites/default/settings.php"
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
 
-# Create a dedicated PHP-FPM config
+# Create a PHP-FPM config (with conf/extra_php-fpm.conf being appended to it)
 ynh_config_add_phpfpm
 
-# Create a dedicated NGINX config
+# Create a dedicated NGINX config using the conf/nginx.conf template
 ynh_config_add_nginx
 
 ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
