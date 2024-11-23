@@ -24,9 +24,9 @@ helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
-ldap = true
+ldap = false
 
-sso = true
+sso = false
 
 disk = "50M"
 ram.build = "50M"
@@ -60,7 +60,7 @@ ram.runtime = "50M"
     [install.install_profil]
     ask.en = "Choose the Drupal 7 install profile to use"
     ask.fr = "Choisissez le profile d'installation de Drupal 7"
-    type = "string"
+    type = "select"
     choices = ["minimal", "standard"]
     default = "standard"
 
