@@ -5,7 +5,9 @@ Il NE doit PAS être modifié à la main.
 
 # Drupal 7 pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
+[![Niveau d’intégration](https://apps.yunohost.org/badge/integration/drupal7)](https://ci-apps.yunohost.org/ci/apps/drupal7/)
+![Statut du fonctionnement](https://apps.yunohost.org/badge/state/drupal7)
+![Statut de maintenance](https://apps.yunohost.org/badge/maintained/drupal7)
 
 [![Installer Drupal 7 avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 

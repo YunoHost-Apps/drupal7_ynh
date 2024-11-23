@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # Drupal 7 YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/drupal7)](https://ci-apps.yunohost.org/ci/apps/drupal7/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/drupal7)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/drupal7)
 
 [![Instalatu Drupal 7 YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 

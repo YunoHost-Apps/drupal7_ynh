@@ -5,7 +5,9 @@
 
 # YunoHost 上的 Drupal 7
 
-[![集成程度](https://dash.yunohost.org/integration/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/drupal7)](https://ci-apps.yunohost.org/ci/apps/drupal7/)
+![工作状态](https://apps.yunohost.org/badge/state/drupal7)
+![维护状态](https://apps.yunohost.org/badge/maintained/drupal7)
 
 [![使用 YunoHost 安装 Drupal 7](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 

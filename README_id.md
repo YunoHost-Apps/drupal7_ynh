@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Drupal 7 untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/drupal7)](https://ci-apps.yunohost.org/ci/apps/drupal7/)
+![Status kerja](https://apps.yunohost.org/badge/state/drupal7)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/drupal7)
 
 [![Pasang Drupal 7 dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 

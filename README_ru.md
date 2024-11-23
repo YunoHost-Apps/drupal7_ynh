@@ -5,7 +5,9 @@
 
 # Drupal 7 для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/drupal7)](https://ci-apps.yunohost.org/ci/apps/drupal7/)
+![Состояние работы](https://apps.yunohost.org/badge/state/drupal7)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/drupal7)
 
 [![Установите Drupal 7 с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 

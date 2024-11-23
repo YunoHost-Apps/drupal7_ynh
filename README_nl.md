@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # Drupal 7 voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/drupal7)](https://ci-apps.yunohost.org/ci/apps/drupal7/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/drupal7)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/drupal7)
 
 [![Drupal 7 met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 
