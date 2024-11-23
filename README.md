@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # Drupal 7 for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/drupal7.svg)](https://dash.yunohost.org/appci/app/drupal7) ![Working status](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
+[![Integration level](https://dash.yunohost.org/integration/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/) ![Working status](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
 
 [![Install Drupal 7 with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 
@@ -19,7 +19,7 @@ It shall NOT be edited by hand.
 Free and open-source content management framework.
 
 
-**Shipped version:** 7.98~ynh3
+**Shipped version:** 7.102~ynh1
 
 ## Screenshots
 

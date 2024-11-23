@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # Drupal 7 para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/drupal7.svg)](https://dash.yunohost.org/appci/app/drupal7) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/drupal7.svg)](https://ci-apps.yunohost.org/ci/apps/drupal7/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/drupal7.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/drupal7.maintain.svg)
 
 [![Instalar Drupal 7 con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=drupal7)
 
@@ -19,7 +19,7 @@ No se debe editar a mano.
 Free and open-source content management framework.
 
 
-**Versión actual:** 7.98~ynh3
+**Versión actual:** 7.102~ynh1
 
 ## Capturas
 
@@ -35,7 +35,7 @@ Free and open-source content management framework.
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/drupal7_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/drupal7_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
