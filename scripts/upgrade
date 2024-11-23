@@ -10,36 +10,42 @@ source /usr/share/yunohost/helpers
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-# ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+ynh_script_progression "Ensuring downward compatibility..."
+
+ynh_app_setting_set_default --key=php_upload_max_filesize --value=512M
+ynh_app_setting_set_default --key=php_post_max_size --value=512M
+ynh_app_setting_set_default --key=php_memory_limit --value=512M
+
+if [ -d "$install_dir/$app" ]; then
+  mv "$install_dir/$app" "$install_dir/web"
+fi
 
 #=================================================
 # UPGRADE COMPOSER
 #=================================================
-ynh_script_progression --message="Upgrading Composer..." --weight=1
+ynh_script_progression "Upgrading Composer..."
 
-ynh_install_composer --phpversion="$phpversion" --workdir="$install_dir/.composer"
+composer_workdir="$install_dir/.composer"
+install -d -m 750 -o $app -g $app $composer_workdir
+ynh_config_add --template="composer.json" --destination="$composer_workdir/composer.json"
+
+ynh_composer_install
+ynh_composer_exec install --no-dev
 
 #=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
+# CREATE DRUSH ALIAS
 #=================================================
-mkdir -p "$install_dir/$app"
+ynh_script_progression "Creating Drush alias..."
 
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
-
-export PATH="$install_dir/.composer/vendor/bin:$PATH"
+install -d -m 750 -o $app -g $app "$install_dir/.drush"
+ynh_config_add --template="yoursite.aliases.drushrc.php" --destination="$install_dir/.drush/$app.aliases.drushrc.php"
 
 #=================================================
 # UPGRADE DRUPAL
 #=================================================
-ynh_script_progression --message="Upgrading Drupal..." --weight=1
+ynh_script_progression "Upgrading Drupal..."
 
-ynh_backup_if_checksum_is_different --file="$install_dir/$app/sites/default/settings.php"
-
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
+ynh_backup_if_checksum_is_different "$install_dir/web/sites/default/settings.php"
 
 pushd "$install_dir"
 	_ynh_exec_with_drush_php drush "@$app" variable-set --exact maintenance_mode 1
@@ -50,29 +56,23 @@ pushd "$install_dir"
 	_ynh_exec_with_drush_php drush "@$app" l10n-update
 
 	_ynh_exec_with_drush_php drush "@$app" variable-set --exact maintenance_mode 0
-
-	chmod 750 "$install_dir"
-	chmod -R o-rwx "$install_dir"
-	chown -R "$app:www-data" "$install_dir"
 popd
 
-ynh_store_file_checksum --file="$install_dir/$app/sites/default/settings.php"
+ynh_store_file_checksum "$install_dir/web/sites/default/settings.php"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
+ynh_script_progression "Upgrading system configurations related to $app..."
 
-# Create a dedicated PHP-FPM config
-ynh_add_fpm_config
+ynh_config_add_phpfpm
 
-# Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-ynh_add_config --template="cron" --destination="/etc/cron.d/$app"
+ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"
