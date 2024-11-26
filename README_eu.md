@@ -21,7 +21,7 @@ EZ editatu eskuz.
 Free and open-source content management framework.
 
 
-**Paketatutako bertsioa:** 7.102~ynh1
+**Paketatutako bertsioa:** 7.102~ynh2
 
 ## Pantaila-argazkiak
 
