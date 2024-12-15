@@ -21,7 +21,7 @@ Nie powinno być ono edytowane ręcznie.
 Free and open-source content management framework.
 
 
-**Dostarczona wersja:** 7.102~ynh1
+**Dostarczona wersja:** 7.13~ynh1
 
 ## Zrzuty ekranu
 
