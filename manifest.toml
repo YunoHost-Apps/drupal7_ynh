@@ -85,10 +85,11 @@ ram.runtime = "50M"
         "php8.2-xml",
         "php8.2-ldap",
         "php8.2-mbstring",
+        "php8.2-uploadprogress",
         "curl",
         "libzip-dev",
         "mariadb-server",
-    ]
+        ]
 
     [resources.database]
     type = "mysql"
