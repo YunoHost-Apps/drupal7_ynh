@@ -7,3 +7,4 @@ test_format = 1.0
     args.install_profil = "minimal"
 
     test_upgrade_from.f4744174a13ab7247037783aafd3659226f4cb0a.name = "7.98~ynh1"
+    test_upgrade_from.9b7ffff1b76366babee9df84e4c8091eca17d8b5.name = "7.102~ynh1"
