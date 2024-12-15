@@ -86,6 +86,7 @@ ram.runtime = "50M"
         "php8.2-ldap",
         "php8.2-mbstring",
         "php8.2-uploadprogress",
+        "php8.2-apcu",
         "curl",
         "libzip-dev",
         "mariadb-server",

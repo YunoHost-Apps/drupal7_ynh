@@ -45,6 +45,7 @@ ynh_script_progression "Installing Drupal..."
 update-alternatives --set php /usr/bin/php$php_version
 
 pushd "$install_dir"
+	ynh_mysql_db_shell < "ALTER DATABASE $db_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 	_ynh_exec_with_drush_php drush pm-download -y drupal-7 --drupal-project-rename=web
 
 	_ynh_exec_with_drush_php drush "@$app" site:install "$install_profil" \
