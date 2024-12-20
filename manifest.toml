@@ -7,7 +7,7 @@ name = "Drupal 7"
 description.en = "Old version of a content management framework written in PHP"
 description.fr = "Ancienne version d'un système de gestion de contenu écrit en PHP"
 
-version = "7.13~ynh1"
+version = "7.103~ynh1"
 
 maintainers = ["yalh76"]
 
@@ -78,15 +78,15 @@ ram.runtime = "50M"
 
     [resources.apt]
     packages = [
-        "php8.2-fpm",
-        "php8.2-cli",
-        "php8.2-gd",
-        "php8.2-mysql",
-        "php8.2-xml",
-        "php8.2-ldap",
-        "php8.2-mbstring",
-        "php8.2-uploadprogress",
-        "php8.2-apcu",
+        "php8.3-fpm",
+        "php8.3-cli",
+        "php8.3-gd",
+        "php8.3-mysql",
+        "php8.3-xml",
+        "php8.3-ldap",
+        "php8.3-mbstring",
+        "php8.3-uploadprogress",
+        "php8.3-apcu",
         "curl",
         "libzip-dev",
         "mariadb-server",

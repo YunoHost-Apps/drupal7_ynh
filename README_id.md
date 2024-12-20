@@ -21,7 +21,7 @@ Ini TIDAK boleh diedit dengan tangan.
 Free and open-source content management framework.
 
 
-**Versi terkirim:** 7.13~ynh1
+**Versi terkirim:** 7.103~ynh1
 
 ## Tangkapan Layar
 
