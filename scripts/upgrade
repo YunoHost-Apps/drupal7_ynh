@@ -56,7 +56,7 @@ install -d -m 750 -o $app -g $app $composer_workdir
 ynh_config_add --template="composer.json" --destination="$composer_workdir/composer.json"
 
 ynh_composer_install
-ynh_composer_exec install --no-dev
+ynh_composer_exec update --no-dev
 
 #=================================================
 # CREATE DRUSH ALIAS
